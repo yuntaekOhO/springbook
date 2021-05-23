@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.common.Log4jAdvice;
-//깃 등록
+//test
 @Service("boardService") // <- Client가 요청할 id
 public class BoardServiceImpl implements BoardService{
 	@Autowired
