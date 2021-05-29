@@ -11,8 +11,12 @@ import com.springbook.biz.common.Log4jAdvice;
 //test
 @Service("boardService") // <- Client가 요청할 id
 public class BoardServiceImpl implements BoardService{
+	
 	@Autowired
-	private BoardDAO boardDAO;
+	private BoardDAOSpring boardDAO;
+	
+	/*@Autowired
+	private BoardDAO boardDAO;*/
 	
 	@Override
 	public void insertBoard(BoardVO vo) {
