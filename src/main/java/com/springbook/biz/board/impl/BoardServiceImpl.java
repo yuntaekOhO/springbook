@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springbook.biz.board.BoardVO;
-import com.springbook.biz.common.Log4jAdvice;
+//import com.springbook.biz.common.Log4jAdvice;
 //import com.springbook.biz.common.BeforeAdvice;
 //test
 @Service("boardService") // <- Client가 요청할 id
