@@ -13,11 +13,15 @@ import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardDAO;
 
 @Controller
-@SessionAttributes("board")
+@SessionAttributes("board") //수정 작업 처리할 때 유용 - 
+//1. writer null로 업데이트 방지
 public class BoardController {
 	
 	//검색 조건 목록 설정
-	@ModelAttribute("conditionMap")
+	@ModelAttribute("conditionMap") //View(JSP)에서 사용할 데이터를 설정한 용도
+	// or Command 객체(UserVO) 이름 변경
+	//@ModelAttribute 메소드 실행 결과로 리턴된 객체는 자동으로 Model에 저장된다. = 리턴된 객체를 View 페이지에서 사용할 수 있다
+	//@ModelAttribute 이 @RequestMapping 보다 먼저 호출 된다 
 	public Map<String, String> searchConditionMap() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("제목", "TITLE");
@@ -33,11 +37,13 @@ public class BoardController {
 	}
 	
 	//글 수정
-	@RequestMapping("/updateBoard.do")
+	@RequestMapping("/updateBoard.do") //수정할 작성자 이름을 확인
 	public String updateBoard(@ModelAttribute("board") BoardVO vo, BoardDAO boardDAO) {
+		// 1. 이 메소드가 호출될 때 세션에 board라는 이름으로 저장된 데이터가 있는지 확인, 있다면 vo에 할당
+		//그리고 사용자가 입력한 파라미터 값을 vo 객체에 할당
 		System.out.println("번호 : "+vo.getSeq());
 		System.out.println("제목 : "+vo.getTitle());
-		System.out.println("작성자 이름 : "+vo.getWriter());
+		System.out.println("작성자 이름 : "+vo.getWriter());//수정할 작성자 이름을 확인
 		System.out.println("내용 : "+vo.getContent());
 		System.out.println("등록일 : "+vo.getRegDate());
 		System.out.println("조회수 : "+vo.getCnt());
